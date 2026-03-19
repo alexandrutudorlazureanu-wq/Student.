@@ -2,6 +2,7 @@ package ro.ulbs.proiectaresoftware.students;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
     public static void main(String[] args) {
@@ -28,11 +29,24 @@ public class Student {
 
 
     @Override
-    public String toString() {
-
-        return String.format("%-15d %-15s %-15s %-15s",
-                numarMatricol, prenume, nume, formatieDeStudiu);
-
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(prenume, student.prenume) &&
+                Objects.equals(nume, student.nume) &&
+                Objects.equals(formatieDeStudiu, student.formatieDeStudiu);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(prenume, nume, formatieDeStudiu);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-15d %-15s %-15s %-15s",
+                numarMatricol, prenume, nume, formatieDeStudiu);
+    }
 }
+

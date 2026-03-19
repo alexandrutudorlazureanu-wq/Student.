@@ -1,7 +1,8 @@
 package ro.ulbs.proiectaresoftware.students;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Application {
 
@@ -13,7 +14,7 @@ public class Application {
         Student s5 = new Student(122, "Eugen", "Uritescu", "TI22/2");
 
 
-        List<Student> listaStudenti = new ArrayList<>();
+        Set<Student> listaStudenti = new HashSet<>();
         listaStudenti.add(s1);
         listaStudenti.add(s2);
         listaStudenti.add(s3);
@@ -32,16 +33,16 @@ public class Application {
 
 
         Student cautatB = new Student(120, "Alis", "Popa", "TI21/2");
-        System.out.println("b) Este Alis Popa in lista? " + existaStudent(listaStudenti, cautatB));
+        System.out.println("b) Este Alis Popa in lista? " + listaStudenti.contains (cautatB));
 
 
         Student cautatC = new Student(112, "Maria", "Popa", "TI21/1");
-        System.out.println("c) Este Maria Popa in lista? " + existaStudent(listaStudenti, cautatC));
+        System.out.println("c) Este Maria Popa in lista? " + listaStudenti.contains(cautatC));
 
     }
 
 
-    public static boolean existaStudent(List<Student> lista, Student studentCautat) {
+    public static boolean existaStudent(Set<Student> lista, Student studentCautat) {
         for (Student s : lista) {
             if (s.getPrenume().equals(studentCautat.getPrenume()) &&
                     s.getNume().equals(studentCautat.getNume()) &&
